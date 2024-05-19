@@ -37,7 +37,7 @@ jobs:
     - name: Create issue
       uses: peter-evans/create-issue-from-file@v5
       with:
-        title: Monthly issue metrics report
+        title: Weekly issue metrics report
         token:  ${{ secrets.DANI_GITHUB_TOKEN }}
         content-filepath: ./issue_metrics.md
         
@@ -51,7 +51,7 @@ jobs:
         # email subject
         subject: GitHub Metrics
         # email body as text
-        body: Daily report of closed issues measurements
+        body: Weekly report of closed issues measurements
         # comma-separated string, send email to
         to: ${{ secrets.DANI_EMAIL }}
         # from email name
