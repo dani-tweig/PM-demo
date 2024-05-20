@@ -22,7 +22,7 @@ jobs:
         first_day=$(date -d "last week -1 day" +%Y-%m-%d)
 
         # Calculate the last day of the previous month
-        last_day=$(date -d "$first_day +1 week +1 day" +%Y-%m-%d)
+        last_day=$(date -d "$first_day +1 week" +%Y-%m-%d)
 
         #Set an environment variable with the date range
         echo "$first_day..$last_day"
@@ -50,8 +50,8 @@ jobs:
       uses: dawidd6/action-send-mail@v3
       with:
         # mail server settings
-        server_address: smtp.gmail.com
-        server_port: 587
+        server_address: smtp-relay.gmail.com
+        server_port: 465
         # email subject
         subject: GitHub Metrics
         # email body as text
