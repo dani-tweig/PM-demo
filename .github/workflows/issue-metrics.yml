@@ -32,7 +32,7 @@ jobs:
       uses: github/issue-metrics@v3.4.0
       env:
         GH_TOKEN:  ${{ secrets.DANI_GITHUB_TOKEN }}
-        SEARCH_QUERY: 'repo:dani-tweig/PM-demo closed:${{ env.last_week }} -reason:"not planned"'
+        SEARCH_QUERY: 'repo:dani-tweig/PM-demo closed:${{ env.last_week }}'
         HIDE_TIME_TO_ANSWER: true
         HIDE_TIME_TO_FIRST_RESPONSE: true
         ENABLE_MENTOR_COUNT: true
