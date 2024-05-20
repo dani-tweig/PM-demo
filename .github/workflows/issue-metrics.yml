@@ -51,7 +51,7 @@ jobs:
       with:
         # mail server settings
         server_address: smtp.gmail.com
-        server_port: 465
+        server_port: 587
         # email subject
         subject: GitHub Metrics
         # email body as text
