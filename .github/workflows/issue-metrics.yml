@@ -59,7 +59,7 @@ jobs:
         subject: Weekly GitHub Metrics
         # email body as text
         body: Weekly report of closed issues measurements
-        html_body: ./issue_metrics.md
+        html_body: file:./issue_metrics.md
         # comma-separated string, send email to
         to: ${{ secrets.DANI_EMAIL }}
         # from email name
