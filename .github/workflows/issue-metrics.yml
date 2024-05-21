@@ -96,8 +96,7 @@ jobs:
         body: Weekly report of closed items measurements
         html_body: file://all_metrics.html 
         # comma-separated string, send email to
-        to: ${{ secrets.EMAIL_REPORT_GROUP }} 
-        #, ${{ secrets.DANI_EMAIL }}
+        to: ${{ secrets.EMAIL_REPORT_GROUP }} , ${{ secrets.DANI_EMAIL }}
         # from email name
         from: GitHub Metrics 
         attachments: |
