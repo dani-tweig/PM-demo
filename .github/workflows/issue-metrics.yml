@@ -50,6 +50,7 @@ jobs:
       with:
         source:  ./issue_metrics.md
         output:  ./issue_metrics.html
+        markdown-style-theme: dark
         
     - name: Send mail
       if: always()
