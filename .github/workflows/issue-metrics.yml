@@ -38,32 +38,31 @@ jobs:
         ENABLE_MENTOR_COUNT: true
         LABELS_TO_MEASURE: "status/pending field info"
         
-    - name: Create issue
-      uses: peter-evans/create-issue-from-file@v5
-      with:
-        title: Weekly issue metrics report
-        token:  ${{ secrets.DANI_GITHUB_TOKEN }}
-        content-filepath: ./issue_metrics.md
+#    - name: Create issue
+#      uses: peter-evans/create-issue-from-file@v5
+#      with:
+#        title: Weekly issue metrics report
+#        token:  ${{ secrets.DANI_GITHUB_TOKEN }}
+#        content-filepath: ./issue_metrics.md
         
     - name: Send mail
       if: always()
       uses: dawidd6/action-send-mail@v3
       with:
         # mail server settings
-        #connection_url: ${{secrets.MAIL_CONNECTION}}
         server_address: smtp.gmail.com
         server_port: 465
         username: ${{ secrets.DANI_EMAIL }}
         password: ${{ secrets.APP_PASS }}
         secure: true
         # email subject
-        subject: GitHub Metrics
+        subject: Weekly GitHub Metrics
         # email body as text
         body: Weekly report of closed issues measurements
         # comma-separated string, send email to
         to: ${{ secrets.DANI_EMAIL }}
         # from email name
-        from: Admin
+        from: The GitHub Guardian
         attachments: |
             ./issue_metrics.md
         
