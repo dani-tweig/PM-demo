@@ -111,8 +111,8 @@ jobs:
         subject: Weekly GitHub Metrics ${{ env.last_week }}
         # email body as text
         body: Weekly report of closed items measurements
-        html_body: file://issue_metrics.html |
-            file://pr_metrics.html
+        html_body: file://issue_metrics.html 
+        #    file://pr_metrics.html
         # comma-separated string, send email to
         to: ${{ secrets.EMAIL_REPORT_GROUP }}
         # from email name
