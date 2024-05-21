@@ -37,13 +37,6 @@ jobs:
         HIDE_TIME_TO_FIRST_RESPONSE: true
         ENABLE_MENTOR_COUNT: true
         LABELS_TO_MEASURE: "status/pending field info"
-        
-#    - name: Create issue
-#      uses: peter-evans/create-issue-from-file@v5
-#      with:
-#        title: Weekly issue metrics report
-#        token:  ${{ secrets.DANI_GITHUB_TOKEN }}
-#        content-filepath: ./issue_metrics.md
 
     - name: Converts Markdown to HTML
       uses: jaywcjlove/markdown-to-html-cli@main
