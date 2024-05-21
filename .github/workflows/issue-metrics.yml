@@ -69,8 +69,8 @@ jobs:
         # comma-separated string, send email to
         to: ${{ secrets.DANI_EMAIL }}
         # from email name
-        from: The GitHub Guardian
+        from: GitHub Metrics 
         attachments: |
-            ./issue_metrics.md
+            ./issue_metrics.html
         
 
