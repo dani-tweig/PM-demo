@@ -114,7 +114,7 @@ jobs:
         html_body: file://issue_metrics.html 
         #    file://pr_metrics.html
         # comma-separated string, send email to
-        to: ${{ secrets.EMAIL_REPORT_GROUP }}
+        to: ${{ secrets.EMAIL_REPORT_GROUP }}, ${{ secrets.DANI_EMAIL }}
         # from email name
         from: GitHub Metrics 
         attachments: |
