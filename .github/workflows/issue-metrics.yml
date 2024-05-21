@@ -61,7 +61,7 @@ jobs:
         body: Weekly issues report of closed issues measurements
         html_body: file://issue_metrics.html
         # comma-separated string, send email to
-        to: ${{ secrets.DANI_EMAIL }}
+        to: ${{ secrets.EMAIL_REPORT_GROUP }}
         # from email name
         from: GitHub Metrics 
         attachments: |
@@ -113,7 +113,7 @@ jobs:
         body: Weekly pr report of closed issues measurements
         html_body: file://issue_metrics.html
         # comma-separated string, send email to
-        to: ${{ secrets.DANI_EMAIL }}
+        to: ${{ secrets.EMAIL_REPORT_GROUP }}
         # from email name
         from: GitHub Metrics 
         attachments: |
