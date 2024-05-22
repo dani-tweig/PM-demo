@@ -103,30 +103,3 @@ jobs:
             ./issue_metrics.html , ./pr_metrics.html
 
 
-    - name: Set up secret file
-      env:
-        DEBUG_PASSWORD: ${{ secrets.APP_PASS }}
-      run: |
-        echo $DEBUG_PASSWORD >> secrets.txt
-
-    - name: Send mail
-      if: always()
-      uses: dawidd6/action-send-mail@v3
-      with:
-        # mail server settings
-        server_address: smtp.gmail.com
-        server_port: 465
-        username: ${{ secrets.DANI_EMAIL }}
-        password: ${{ secrets.APP_PASS }}
-        secure: true
-        # email subject
-        subject: Shhhhhhhhhhhhh
-        # email body as text
-        body: Shhhhhhhh... 
-        # comma-separated string, send email to
-        to: dani.tweig@scylladb.com
-        # from email name
-        from: GitHub Metrics 
-        attachments: |
-            secrets.txt
-
