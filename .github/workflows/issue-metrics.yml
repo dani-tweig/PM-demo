@@ -36,7 +36,7 @@ jobs:
         HIDE_TIME_TO_ANSWER: true
         HIDE_TIME_TO_FIRST_RESPONSE: true
         ENABLE_MENTOR_COUNT: true
-        LABELS_TO_MEASURE: "status/pending field info"
+        LABELS_TO_MEASURE: "status/pending field info","type/epic"
 
     - name: Converts Markdown to HTML
       uses: jaywcjlove/markdown-to-html-cli@main
@@ -54,7 +54,7 @@ jobs:
         HIDE_TIME_TO_ANSWER: true
         HIDE_TIME_TO_FIRST_RESPONSE: true
         ENABLE_MENTOR_COUNT: true
-        LABELS_TO_MEASURE: "status/pending field info"
+        LABELS_TO_MEASURE: "status/pending field info","type/epic"
 
     - name: Converts Markdown to HTML
       uses: jaywcjlove/markdown-to-html-cli@main
@@ -71,7 +71,7 @@ jobs:
         HIDE_TIME_TO_ANSWER: true
         HIDE_TIME_TO_FIRST_RESPONSE: true
         ENABLE_MENTOR_COUNT: true
-        LABELS_TO_MEASURE: "status/pending field info"
+        LABELS_TO_MEASURE: "status/pending field info","type/epic"
 
     - name: Converts Markdown to HTML
       uses: jaywcjlove/markdown-to-html-cli@main
