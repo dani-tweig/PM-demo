@@ -6,27 +6,40 @@ on:
     types: [opened]
   pull_request:
     types: [opened]
-  issue_comment:
-    types: [created]
-env:
-  MY_GITHUB_TOKEN: ${{ secrets.DANI_GITHUB_TOKEN }}
+  #issue_comment:
+   # types: [created]
+#env:
+ # MY_GITHUB_TOKEN: ${{ secrets.DANI_GITHUB_TOKEN }}
 
 jobs:
-  assign_one_project:
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
-    name: Assign to One Project
     steps:
+      - uses: actions/add-to-project@RELEASE_VERSION
+        with:
+          # You can target a project in a different organization
+          # to the issue
+          project-url: https://github.com/users/dani-tweig/projects/1
+          github-token: ${{ secrets.DANI_GITHUB_TOKEN }}
+          labeled: type/bug, type/epic
+          label-operator: OR
+
+#  assign_one_project:
+#    runs-on: ubuntu-latest
+#    name: Assign to One Project
+#    steps:
   #  - name: Assign NEW issues and NEW pull requests to project 2
   #    uses: srggrs/assign-one-project-github-action@1.2.1
   #    if: github.event.action == 'opened'
   #    with:
   #      project: 'https://github.com/srggrs/assign-one-project-github-action/projects/2'
 
-    - name: Assign issues and pull requests with `bug` label to project 3
-      uses: srggrs/assign-one-project-github-action@1.2.1
-      if: |
-        contains(github.event.issue.labels.*.name, 'type/bug') ||
-        contains(github.event.pull_request.labels.*.name, 'type/bug')
-      with:
-        project: 'https://github.com/users/dani-tweig/projects/1'
-        column_name: 'Backlog'
+ #   - name: Assign issues and pull requests with `bug` label to project 3
+ #     uses: srggrs/assign-one-project-github-action@1.2.1
+ #     if: |
+ #       contains(github.event.issue.labels.*.name, 'type/bug') ||
+ #       contains(github.event.pull_request.labels.*.name, 'type/bug')
+ #     with:
+ #       project: 'https://github.com/users/dani-tweig/projects/1'
+ #       column_name: 'Backlog'
