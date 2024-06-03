@@ -1,4 +1,5 @@
 name: Auto Assign to Project(s)
+# https://github.com/marketplace/actions/assign-to-one-project
 
 on:
   issues:
@@ -8,7 +9,7 @@ on:
   issue_comment:
     types: [created]
 env:
-  GITHUB_TOKEN: ${{ secrets.DANI_GITHUB_TOKEN }}
+  MY_GITHUB_TOKEN: ${{ secrets.DANI_GITHUB_TOKEN }}
 
 jobs:
   assign_one_project:
