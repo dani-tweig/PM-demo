@@ -14,7 +14,7 @@ jobs:
       with:
         script: |
           const labelFilters = ['P0','status/field urgent','status/release blocker','area/The Feature'];
-          const excludingLabelFilters = ['type/epic','type/bug'];
+          const excludingLabelFilters = ['type/epic'];
           const daysInactive = 7;
           const now = new Date();
 
