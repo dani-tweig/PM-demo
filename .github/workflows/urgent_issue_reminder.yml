@@ -37,7 +37,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue.number,
-                body: `This issue has been open for more than ${daysInactive} days without activity. Please check its status.`
+                body: `This urgent issue has been open for more than ${daysInactive} days without activity. Please check its status.`
               });
             }
           }
