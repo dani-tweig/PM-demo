@@ -13,7 +13,8 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
-          const labelFilters = ['P0','status/field urgent','status/release blocker','enhancement'];
+          const labelFilters = ['P0','status/field urgent','status/release blocker','area/The Feature'];
+          const excludingLabelFilters = ['type/epic','type/bug'];
           const daysInactive = 7;
           const now = new Date();
 
@@ -27,6 +28,8 @@ jobs:
           for (const issue of issues.data) {
             // Check if issue has any of the specified labels
             const hasFilteredLabel = issue.labels.some(label => labelFilters.includes(label.name));
+            const hasExcludingLabel = issue.labels.some(label => excludingLabelFilters.includes(label.name));
+            if (hasExcludingLabel) continue;
             if (!hasFilteredLabel) continue;
 
             // Check for inactivity
