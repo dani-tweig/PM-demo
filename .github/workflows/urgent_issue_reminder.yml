@@ -1,0 +1,43 @@
+name: Urgent Issue Reminder
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Runs every Monday at 9 AM
+
+jobs:
+  reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send reminders
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const labelFilters = ['P0','status/field urgent','status/release blocker'];
+          const daysInactive = 7;
+          const now = new Date();
+
+          // Fetch open issues
+          const issues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open'
+          });
+
+          for (const issue of issues.data) {
+            // Check if issue has any of the specified labels
+            const hasFilteredLabel = issue.labels.some(label => labelFilters.includes(label.name));
+            if (!hasFilteredLabel) continue;
+
+            // Check for inactivity
+            const lastUpdated = new Date(issue.updated_at);
+            const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 * 24);
+            if (diffInDays > daysInactive) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `This issue has been open for more than ${daysInactive} days without activity. Please check its status.`
+              });
+            }
+          }
