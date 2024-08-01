@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Send reminders
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           const labelFilters = ['P0','status/field urgent','status/release blocker'];
