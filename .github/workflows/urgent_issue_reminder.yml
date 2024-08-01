@@ -2,7 +2,7 @@ name: Urgent Issue Reminder
 
 on:
   schedule:
-    - cron: '* * * * *' 
+    - cron: '*/15 * * * *' 
 
 jobs:
   reminder:
