@@ -15,7 +15,7 @@ jobs:
         script: |
           const labelFilters = [ 'type/bug'];
           const excludingLabelFilters = ['documentation', 'type/longterm'];
-          const daysInactive = 7;
+          const daysInactive = 2;
           const now = new Date();
 
           // Fetch open issues
