@@ -38,7 +38,7 @@ jobs:
             const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 );
             if (diffInDays > daysInactive) {
 
-              if  (context.issue.assigneesif === undefined) {
+              if  (context.issue.assignees === undefined) {
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
