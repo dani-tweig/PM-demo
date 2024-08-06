@@ -15,7 +15,7 @@ jobs:
         script: |
           const labelFilters = [ 'P54'];
           const excludingLabelFilters = ['documentation', 'type/longterm'];
-          const daysInactive = 1;
+          const daysInactive = 100;
           const now = new Date();
 
           // Fetch open issues
@@ -34,8 +34,7 @@ jobs:
 
             // Check for inactivity
             const lastUpdated = new Date(issue.updated_at);
-            //const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 * 24);
-            const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 );
+            const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 * 24);
             if (diffInDays > daysInactive) {
 
               if (issue.assignees.length > 0) {
