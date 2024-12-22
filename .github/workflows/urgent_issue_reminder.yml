@@ -2,7 +2,8 @@ name: Urgent Issue Reminder
 
 on:
   schedule:
-    - cron: '0 8 * * 1' # Runs every Monday at 8 AM
+    #- cron: '0 8 * * 1' # Runs every Monday at 8 AM
+    - cron: '0,15,30,45 * * * *'
 
 jobs:
   reminder:
@@ -13,9 +14,9 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
-          const labelFilters = [ 'P54'];
+          const labelFilters = [ 'bug'];
           const excludingLabelFilters = ['documentation', 'type/longterm'];
-          const daysInactive = 100;
+          const daysInactive = 40;
           const now = new Date();
 
           // Fetch open issues
@@ -24,7 +25,7 @@ jobs:
             repo: context.repo.repo,
             state: 'open'
           });
-
+          echo "Looking for issues"
           for (const issue of issues.data) {
             // Check if issue has any of the specified labels
             const hasFilteredLabel = issue.labels.some(label => labelFilters.includes(label.name));
@@ -32,11 +33,12 @@ jobs:
             if (hasExcludingLabel) continue;
             if (!hasFilteredLabel) continue;
 
+            echo "Found potential urgent issues to notify."
             // Check for inactivity
             const lastUpdated = new Date(issue.updated_at);
             const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 * 24);
             if (diffInDays > daysInactive) {
-
+              echo "Alert about issue number ${issue.number}" 
               if (issue.assignees.length > 0) {
                 const assigneesLogins = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
                 await github.rest.issues.createComment({
