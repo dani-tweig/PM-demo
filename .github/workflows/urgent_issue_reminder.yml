@@ -3,7 +3,7 @@ name: Urgent Issue Reminder
 on:
   schedule:
     #- cron: '0 8 * * 1' # Runs every Monday at 8 AM
-    - cron: '0,15,30,45 * * * *'
+    - cron: "*/15 * * * *"
 
 jobs:
   reminder:
