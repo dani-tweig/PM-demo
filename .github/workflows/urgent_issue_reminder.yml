@@ -42,7 +42,7 @@ jobs:
               if (issue.assignees.length > 0) {
               
                 const assigneesLogins = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
-                console.log("${assigneesLogins}, This urgent issue had no activity for more than "$+{daysInactive}+" days. Please check its status.\n CC @mykaul @dani-tweig");
+                console.log("${assigneesLogins}, This urgent issue had no activity for more than "+${daysInactive}+" days. Please check its status.\n CC @mykaul @dani-tweig");
                 // await github.rest.issues.createComment({
                 //  owner: context.repo.owner,
                 //  repo: context.repo.repo,
