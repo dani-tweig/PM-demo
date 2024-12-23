@@ -42,20 +42,18 @@ jobs:
               console.log("Alert about issue #"+issue.number); 
               if (issue.assignees.length > 0) {
                 const assigneesLogins = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
-                console.log(assigneesLogins+", This urgent issue had no activity for more than "+daysInactive+" days. Please check its status.\n CC @mykaul @dani-tweig");
-                // await github.rest.issues.createComment({
-                //  owner: context.repo.owner,
-                //  repo: context.repo.repo,
-                //  issue_number: issue.number,
-                //  body: `${assigneesLogins}, This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
-                //});
-              } else {
-                console.log("This urgent issue had no activity for more than "+daysInactive+" days. Please check its status.\n CC @mykaul @dani-tweig");
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issue.number,
-                  body: `This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
+                  body: `${assigneesLogins}, This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @dani-tweig`
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @dani-tweig`
                 });
               }
             } 
