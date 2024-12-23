@@ -25,7 +25,7 @@ jobs:
             repo: context.repo.repo,
             state: 'open'
           });
-          console.log("Looking for issues with labels:"+labelFilters+", excluding labels:"+excludingLabelFilters);
+          console.log("Looking for issues with labels:"+labelFilters+", excluding labels:"+excludingLabelFilters+ " that have been inactive for more than "+daysInactive+" days.");
           for (const issue of issues.data) {
             // Check if issue has any of the specified labels
             const hasFilteredLabel = issue.labels.some(label => labelFilters.includes(label.name));
