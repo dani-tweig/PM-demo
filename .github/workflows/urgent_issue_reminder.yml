@@ -37,10 +37,10 @@ jobs:
             // Check for inactivity
             const lastUpdated = new Date(issue.updated_at);
             const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 * 24);
+            console.log("Issue #"+issue.number+"; Days inactive:"+diffInDays);
             if (diffInDays > daysInactive) {
               console.log("Alert about issue #"+issue.number); 
               if (issue.assignees.length > 0) {
-              
                 const assigneesLogins = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
                 console.log(assigneesLogins+", This urgent issue had no activity for more than "+daysInactive+" days. Please check its status.\n CC @mykaul @dani-tweig");
                 // await github.rest.issues.createComment({
@@ -51,12 +51,12 @@ jobs:
                 //});
               } else {
                 console.log("This urgent issue had no activity for more than "+daysInactive+" days. Please check its status.\n CC @mykaul @dani-tweig");
-                // await github.rest.issues.createComment({
-                //  owner: context.repo.owner,
-                //  repo: context.repo.repo,
-                //  issue_number: issue.number,
-                //  body: `This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
-                //});
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
+                });
               }
-            }
+            } 
           }
