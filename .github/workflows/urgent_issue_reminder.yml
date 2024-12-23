@@ -41,19 +41,21 @@ jobs:
               console.log("Alert about issue number ${issue.number}"); 
               if (issue.assignees.length > 0) {
                 const assigneesLogins = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issue.number,
-                  body: `${assigneesLogins}, This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
-                });
+                console.log("${assigneesLogins}, This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig");
+                // await github.rest.issues.createComment({
+                //  owner: context.repo.owner,
+                //  repo: context.repo.repo,
+                //  issue_number: issue.number,
+                //  body: `${assigneesLogins}, This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
+                //});
               } else {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issue.number,
-                  body: `This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
-                });
+                console.log("This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig");
+                // await github.rest.issues.createComment({
+                //  owner: context.repo.owner,
+                //  repo: context.repo.repo,
+                //  issue_number: issue.number,
+                //  body: `This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig`
+                //});
               }
             }
           }
