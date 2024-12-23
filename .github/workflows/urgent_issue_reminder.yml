@@ -38,11 +38,11 @@ jobs:
             const lastUpdated = new Date(issue.updated_at);
             const diffInDays = (now - lastUpdated) / (1000 * 60 * 60 * 24);
             if (diffInDays > daysInactive) {
-              console.log("Alert about issue number ${issue.number}"); 
+              console.log("Alert about issue number ".join(${issue.number})); 
               if (issue.assignees.length > 0) {
               
                 const assigneesLogins = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
-                console.log("${assigneesLogins}, This urgent issue had no activity for more than ${daysInactive} days. Please check its status.\n CC @mykaul @dani-tweig");
+                console.log("${assigneesLogins}, This urgent issue had no activity for more than "$+{daysInactive}+" days. Please check its status.\n CC @mykaul @dani-tweig");
                 // await github.rest.issues.createComment({
                 //  owner: context.repo.owner,
                 //  repo: context.repo.repo,
