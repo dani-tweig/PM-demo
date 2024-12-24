@@ -14,7 +14,7 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
-          const labelFilters = ['invalid'];
+          const labelFilters = ['invalid','enhancement'];
           const excludingLabelFilters = ['documentation', 'type/longterm'];
           const daysInactive = 40;
           const now = new Date();
