@@ -1,5 +1,4 @@
 print("Hello")
 
-# lksjdlfkjsdlfkjdlfkjsdlkfjsd
-# klsjdhfkjsdhkfjsd
+# lksjdlfkjs
 print ("World")
